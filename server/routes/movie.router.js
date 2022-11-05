@@ -53,4 +53,21 @@ router.post('/', (req, res) => {
   })
 })
 
+router.get('/:id', (req, res) => {
+  const movieId = req.params.id;
+  const queryText =  `
+    SELECT * FROM "movies"
+    WHERE id = $1;
+  `;
+
+  pool.query(queryText, [movieId])
+  .then((result) => {
+    res.send(result.rows);
+  })
+  .catch((err) => {
+    console.log('Error in GET movie', err);
+  });
+
+})
+
 module.exports = router;
