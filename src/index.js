@@ -18,6 +18,9 @@ function* rootSaga() {
     // Get details for selected movie
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
 
+    // Get details for selected movie
+    yield takeEvery('FETCH_MOVIE_GENRE', fetchMovieGenre);
+
     // Get genre for selected movie
     // yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
 }
@@ -38,17 +41,22 @@ function* fetchAllMovies() {
 function* fetchMovieDetails(action) {
     // Get movie details from database by id
     try {
-        const movieInfo = yield axios.get(`/api/movie/${action.payload}`);
-        yield put({ type: 'SET_MOVIE_INFO', payload: movieInfo });
+        const movieDetails = yield axios.get(`/api/movie/${action.payload}`);
+        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieInfo });
     } catch(error) {
         console.log('Error in getFetch', error);
     }
+
+}
+
+function* fetchMovieGenre(action) {
     try {
-        const genreInfo = yield axios.get(`/api/genre/${action.payload}`);
-        yield put({ type: 'SET_GENRE_INFO', payload: genreInfo });
+        const movieDetails = yield axios.get(`/api/genre/${action.payload}`);
+        yield put({ type: 'SET_MOVIE_GENRE', payload: genreInfo });
     } catch(error) {
         console.log('Error in getFetch', error);
     }
+
 }
 
 function* addNewMovie() {
