@@ -41,9 +41,11 @@ function* fetchAllMovies() {
 function* fetchMovieDetails(action) {
     // Get movie details from database by id
     try {
-        const movieDetails = yield axios.get(`/api/movie/${action.payload}`);
-        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieInfo });
-    } catch(error) {
+        const movieId = action.payload;
+        const movieDetails = yield axios.get(`/api/movie/${movieId}`);
+        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieDetails.data });
+    } catch {
+        (error) =>
         console.log('Error in getFetch', error);
     }
 
@@ -51,17 +53,19 @@ function* fetchMovieDetails(action) {
 
 function* fetchMovieGenre(action) {
     try {
-        const movieDetails = yield axios.get(`/api/genre/${action.payload}`);
-        yield put({ type: 'SET_MOVIE_GENRE', payload: genreInfo });
-    } catch(error) {
+        const movieId = action.payload;
+        const movieGenre = yield axios.get(`/api/genre/${movieId}`);
+        yield put({ type: 'SET_MOVIE_GENRE', payload: movieGenre.data });
+    } catch {
+        (error) =>
         console.log('Error in getFetch', error);
     }
 
 }
 
-function* addNewMovie() {
-    // Add movie to the database
-}
+// function* addNewMovie() {
+//     // Add movie to the database
+// }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -96,14 +100,14 @@ const movieDetails = (state = [], action) => {
     }
 }
 
-const movieGenre = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_MOVIE_GENRE':
-            return action.payload;
-        default:
-            return state;
-    }
-}
+// const movieGenre = (state = [], action) => {
+//     switch (action.type) {
+//         case 'SET_MOVIE_GENRE':
+//             return action.payload;
+//         default:
+//             return state;
+//     }
+// }
 
 // Create one store that all components can use
 const storeInstance = createStore(
@@ -111,7 +115,7 @@ const storeInstance = createStore(
         movies,
         genres,
         movieDetails,
-        movieGenre,
+        // movieGenre,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
