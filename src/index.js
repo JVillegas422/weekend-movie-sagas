@@ -14,6 +14,12 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+
+    // Get details for selected movie
+    // yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
+
+    // Get genre for selected movie
+    // yield takeEvery('FETCH_MOVIE_GENRE', fetchGenreDetails);
 }
 
 function* fetchAllMovies() {
@@ -27,6 +33,14 @@ function* fetchAllMovies() {
         console.log('get all error');
     }
         
+}
+
+function* fetchMovieDetails() {
+    // Get movie details from database by id
+}
+
+function* fetchGenreDetails() {
+    // Get movie genre from database
 }
 
 // Create sagaMiddleware
@@ -46,6 +60,16 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+// Used to store the movie details
+const movieDetails = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_DETAILS':
             return action.payload;
         default:
             return state;
