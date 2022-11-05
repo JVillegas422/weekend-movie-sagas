@@ -16,7 +16,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
 
     // Get details for selected movie
-    // yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
+    yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
 
     // Get genre for selected movie
     // yield takeEvery('FETCH_MOVIE_GENRE', fetchGenreDetails);
@@ -35,8 +35,15 @@ function* fetchAllMovies() {
         
 }
 
-function* fetchMovieDetails() {
+function* fetchMovieDetails(action) {
     // Get movie details from database by id
+    try {
+        const movieInfo = yield axios.get(`/api/movie/${action.payload}`);
+        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieInfo.data });
+    } catch {
+        console.log('get all error');
+    }
+
 }
 
 function* fetchGenreDetails() {
@@ -81,6 +88,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieDetails,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
