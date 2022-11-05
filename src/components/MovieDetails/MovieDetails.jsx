@@ -6,7 +6,7 @@ function MovieDetails() {
     console.log('in MovieDetails');
     
     const movieDetails = useSelector(store => store.movieDetails);
-    const genres = useSelector(store => store.genres);
+    const movieGenre = useSelector(store => store.movieGenre);
     const history = useHistory();
 
     const handleClick = () => {
@@ -17,19 +17,23 @@ function MovieDetails() {
         <>
         <button onClick={handleClick}>Home Page</button>
             <h3>Movie Details:</h3>
-
-            <div key={movieDetails.id}>
-                <h3>{movieDetails.title}</h3>
-                <img
-                    src={movieDetails.poster} alt={movieDetails.title} />
-                <p>{movieDetails.description}</p>
-            </div>
+            {movieDetails.map(movie => {
+                return (
+                    <div key={movie.id} >
+                        {movie.title}
+                        <img src={movie.poster} alt={movie.title} />
+                        <p>{movie.description}</p>
+                    </div>
+                )
+            })}
 
             <h3>Movie Genre</h3>
-            <p>{genres.name}</p>
-            {genres.map((genre, index) => {
+            <p>Genre:</p>
+            {movieGenre.map(genre => {
                 return (
-                    <p key={index}>{genre.name}</p>
+                    <div key={genre.id} >
+                        <p>{genre.name}</p>
+                    </div>
                 )
             })}
         </>
