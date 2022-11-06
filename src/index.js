@@ -18,6 +18,8 @@ function* rootSaga() {
     // Get details for selected movie
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
 
+    yield takeEvery('FETCH_MOVIE_GENRE', fetchGenre) 
+
     // Get genre for selected movie
     yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
 }
@@ -47,6 +49,19 @@ function* fetchMovieDetails(action) {
     }
 
 }
+
+function* fetchGenre(action) {
+    // get movie genre from the DB
+    try {
+        const movieId = action.payload;
+        const movieDetails = yield axios.get(`/api/genre/${movieId}`)
+        yield put({ type: 'SET_MOVIE_GENRE', payload: movieDetails.data })
+    } catch {
+        (error) =>
+            console.log('get details error', error);
+    }
+}
+
 
 function* addNewMovie(action) {
     // Add movie to the database
@@ -92,12 +107,23 @@ const movieDetails = (state = [], action) => {
     }
 }
 
+// Used to store the selected movie genre(s)
+const movieGenres = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_GENRE':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
         movieDetails,
+        movieGenres,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
