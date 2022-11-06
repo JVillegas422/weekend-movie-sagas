@@ -8,6 +8,8 @@ import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 function MovieDetails() {
     console.log('in MovieDetails');
