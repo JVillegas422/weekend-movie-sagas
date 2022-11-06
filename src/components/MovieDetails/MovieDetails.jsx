@@ -26,7 +26,7 @@ function MovieDetails() {
             <Grid container direction="column" alignItems="center"
                 justify="center" style={{ minHeight: '100vh' }}>
                 
-                <Card variant="outlined" sx={{ width: '50%', p: 3, mt: '4%', bgcolor: 'darkgrey' }}>
+                <Card variant="outlined" border-radius sx={{ width: '50%', p: 3, mt: '4%', bgcolor: 'grey.400' }}>
                 <section>
                     <Grid item>
                         {movieDetails.map(movie => {
