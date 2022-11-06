@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 
 // Matieral UI Imports
 import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
