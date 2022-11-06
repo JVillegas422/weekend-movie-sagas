@@ -19,26 +19,31 @@ function MovieDetails() {
 
     return (
         <>
-            <Button variant="contained" color="success" onClick={handleClick}>
-                Home Page
-            </Button>
+            <Typography variant='h3' mt={4}>
+                Movie Details
+            </Typography>
 
-            <h3>Movie Details:</h3>
-            <Grid container spacing={0} direction="column" alignItems="center"
+            <Grid container direction="column" alignItems="center"
                 justify="center" style={{ minHeight: '100vh' }}>
                 
-                <Card variant="outlined" sx={{ maxWidth: '40rem', mt: '5%' }}>
+                <Card variant="outlined" sx={{ width: '50%', p: 3, mt: '4%', bgcolor: 'darkgrey' }}>
                 <section>
                     <Grid item>
                         {movieDetails.map(movie => {
                             return (
                                 <div key={movie.id} >
-                                    <Typography gutterBottom variant="h5" component="div">
+                                    <Typography sx={{ p: 2 }} gutterBottom variant="h4" component="div">
                                         {movie.title}
                                     </Typography>
                                     <img src={movie.poster} alt={movie.title} />
-                                        <p>{movie.description}</p>
-                                    </div>
+                                    <Typography mt={4} sx={{ p: 3 }} variant="body2" color="text.secondary">
+                                        {movie.description}
+                                    </Typography>
+
+                                    <Button variant="contained" color="success" onClick={handleClick}>
+                                        Home Page
+                                    </Button>
+                                </div>
                                 );
                             })}
                     </Grid>

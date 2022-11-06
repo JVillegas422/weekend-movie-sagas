@@ -8,6 +8,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
 
 function MovieList() {
     const dispatch = useDispatch();
@@ -30,12 +31,14 @@ function MovieList() {
     return (
         <main>
             <div>
-                <Grid container justify="center" alignItems="center">
+                <Grid container spacing={2} justify="center" alignItems="center">
                 <ImageList 
-                    gap={15} cols={3}
-                    sx={{m:1, width:'50%', pl:'25%', pt:'2%'}}>
+                    gap={15} cols={4}
+                    sx={{m:1, width:'65%', pl:'20%', pt:'4%'}}>
                     {movies.map((movie) => (
-                        <ImageListItem key={movie.id}>
+                        <Card key={movie.id}
+                            sx={{ p: 2, bgcolor: 'darkgrey' }}
+                        >
                             <img
                                 src={movie.poster}
                                 srcSet={movie.poster}
@@ -46,8 +49,9 @@ function MovieList() {
                             <ImageListItemBar
                                 title={movie.title}
                                 position="below"
+                                sx={{ mx: 'auto' }}
                             />
-                        </ImageListItem>
+                        </Card>
                     ))}
                 </ImageList>
                 </Grid>
