@@ -6,11 +6,14 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 function MovieDetails() {
     console.log('in MovieDetails');
     
     const movieDetails = useSelector(store => store.movieDetails);
+    // const genres = useSelector(store => store.genres);
     const history = useHistory();
 
     const handleClick = () => {
@@ -19,10 +22,23 @@ function MovieDetails() {
 
     return (
         <>
+            <div className="breadCrumbsMenu">
+                <Breadcrumbs sx={{ pl:'2%', color: 'white' }} aria-label="breadcrumb">
+                    <Link
+                        underline="hover"
+                        color="inherit"
+                        onClick={event => history.push('/')}
+                    >
+                        Home Page
+                    </Link>
+                </Breadcrumbs>
+            </div>
+
             <Typography variant='h3' mt={4}>
                 Movie Details
             </Typography>
 
+            
             <Grid container direction="column" alignItems="center"
                 justify="center" style={{ minHeight: '100vh' }}>
                 
@@ -39,6 +55,15 @@ function MovieDetails() {
                                     <Typography mt={4} sx={{ p: 3 }} variant="body2" color="text.secondary">
                                         {movie.description}
                                     </Typography>
+
+                                    <p>Genre</p>
+                                        {/* {movieDetails.map(genre => {
+                                            return (
+                                                <div key={genre.id} >
+                                                    <p>{genre.name}</p>
+                                                </div>
+                                                );
+                                            })} */}
 
                                     <Button variant="contained" color="success" onClick={handleClick}>
                                         Home Page
