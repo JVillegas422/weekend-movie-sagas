@@ -14,7 +14,7 @@ import FormControl from '@mui/material/FormControl';
  function MovieForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const genres = useSelector(store => store.genres);
+    // const genres = useSelector(store => store.genres);
     const [newMovie, setNewMovie] = useState({});
     
     const handleNewMovie = (evt) => {
@@ -85,26 +85,17 @@ import FormControl from '@mui/material/FormControl';
                 Need to add in the list of genres 
                 for user to select 
             */}
-
-            {/* 
-            <TextField
+            
+            {/* <TextField
                 id="filled-select-currency"
                 select
                 label="Movie Genre"
                 variant="filled"
                 onChange={handleNewMovie}
                 name="genre_id"
-                value={''}
-            >
-                {genres.map((genre) => {
-                    <MenuItem 
-                        key={genre.id} 
-                        value={genre.id} 
-                    >
-                        {genre.name}
-                    </MenuItem>
-                })}
-            </TextField> */}
+                value={newMovie.genre}
+            /> */}
+           
 
             <Button
                 type="submit"
