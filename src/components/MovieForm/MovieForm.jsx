@@ -95,16 +95,7 @@ import FormControl from '@mui/material/FormControl';
                 onChange={handleNewMovie}
                 name="genre_id"
                 value={''}
-            >
-                {genres.map((genre) => {
-                    <MenuItem 
-                        key={genre.id} 
-                        value={genre.id} 
-                    >
-                        {genre.name}
-                    </MenuItem>
-                })}
-            </TextField> */}
+            /> */}
 
             <Button
                 type="submit"
