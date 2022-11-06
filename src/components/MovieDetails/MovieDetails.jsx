@@ -13,7 +13,7 @@ function MovieDetails() {
     console.log('in MovieDetails');
     
     const movieDetails = useSelector(store => store.movieDetails);
-    // const genres = useSelector(store => store.genres);
+    const movieGenre = useSelector(store => store.movieGenres);
     const history = useHistory();
 
     const handleClick = () => {
@@ -55,15 +55,21 @@ function MovieDetails() {
                                     <Typography mt={4} sx={{ p: 3 }} variant="body2" color="text.secondary">
                                         {movie.description}
                                     </Typography>
-
-                                    <p>Genre</p>
-                                        {/* {movieDetails.map(genre => {
-                                            return (
-                                                <div key={genre.id} >
-                                                    <p>{genre.name}</p>
-                                                </div>
-                                                );
-                                            })} */}
+                                    
+                                    <Grid item>
+                                        <Typography
+                                            variant='h5'
+                                        >
+                                            Movie Genre
+                                        </Typography>
+                                            {movieGenre.map(genre => {
+                                                return (
+                                                    <div key={genre.id} >
+                                                        <p>{genre.name}</p>
+                                                    </div>
+                                                 );
+                                            })}
+                                    </Grid>
 
                                     <Button variant="contained" color="success" onClick={handleClick}>
                                         Home Page
@@ -75,16 +81,6 @@ function MovieDetails() {
                 </section>
                 </Card>
             </Grid>
-
-            {/* {movieDetails.map(movie => {
-                return (
-                    <div key={movie.id} >
-                        {movie.title}
-                        <img src={movie.poster} alt={movie.title} />
-                        <p>{movie.description}</p>
-                    </div>
-                )
-            })} */}
         </>
     );
 }
