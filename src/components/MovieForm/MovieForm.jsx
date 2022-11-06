@@ -9,7 +9,8 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
-
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
  function MovieForm() {
     const dispatch = useDispatch();
@@ -33,11 +34,24 @@ import FormControl from '@mui/material/FormControl';
     
   return (
     <>
+        <div className="breadCrumbsMenu">
+            <Breadcrumbs sx={{ pl:'2%', color: 'white' }} aria-label="breadcrumb">
+                <Link
+                    underline="hover"
+                    color="inherit"
+                    onClick={event => history.push('/')}
+                >
+                    Home Page
+                </Link>
+            </Breadcrumbs>
+        </div>
+
         <Typography variant='h3' mt={2} sx={{ p: 3 }}>
             Add a new movie
         </Typography>     
 
         <Box 
+            className='myBox'
             component="form" 
             mx={'auto'}
             sx={{ 
@@ -113,9 +127,10 @@ import FormControl from '@mui/material/FormControl';
         </Typography> 
 
         <Button 
+            className='cancelBtn'
             type="submit"
             variant="contained"
-            sx={{ p: 2 }}
+            sx={{ p: 2, m: 5 }}
             mb={2}
             onClick={() => { history.push('/')}}
         >

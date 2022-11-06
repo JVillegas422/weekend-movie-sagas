@@ -21,6 +21,7 @@ function App() {
           <Route path='/movieDetails' exact>
             <MovieDetails />
           </Route>
+          
         {/* Add Movie page */}
           <Route path='/movieform' exact>
             <MovieForm />

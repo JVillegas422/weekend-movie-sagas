@@ -8,6 +8,8 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 function MovieList() {
     const dispatch = useDispatch();
@@ -29,6 +31,18 @@ function MovieList() {
 
     return (
         <main>
+
+            <div className="breadCrumbsMenu">
+                <Breadcrumbs sx={{ pl:'2%', color: 'white' }} aria-label="breadcrumb">
+                    <Link
+                        underline="hover"
+                        color="inherit"
+                        onClick={event => history.push('/movieform')}
+                    >
+                        Add Movie
+                    </Link>
+                </Breadcrumbs>
+            </div>
             <div>
                 <Grid container spacing={2} justify="center" alignItems="center">
                 <ImageList 

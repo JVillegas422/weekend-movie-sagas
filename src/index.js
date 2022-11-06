@@ -18,9 +18,6 @@ function* rootSaga() {
     // Get details for selected movie
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
 
-    // Get details for selected movie
-    yield takeEvery('FETCH_MOVIE_GENRE', fetchMovieGenre);
-
     // Get genre for selected movie
     yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
 }
@@ -46,19 +43,7 @@ function* fetchMovieDetails(action) {
         yield put({ type: 'SET_MOVIE_DETAILS', payload: movieDetails.data });
     } catch {
         (error) =>
-        console.log('Error in getFetch', error);
-    }
-
-}
-
-function* fetchMovieGenre(action) {
-    try {
-        const movieId = action.payload;
-        const movieGenre = yield axios.get(`/api/genre/${movieId}`);
-        yield put({ type: 'SET_MOVIE_GENRE', payload: movieGenre.data });
-    } catch {
-        (error) =>
-        console.log('Error in getFetch', error);
+        console.log('Error in set movie details', error);
     }
 
 }
@@ -91,7 +76,7 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
-            return action.payload;
+            return action.payload.data;
         default:
             return state;
     }
@@ -107,22 +92,12 @@ const movieDetails = (state = [], action) => {
     }
 }
 
-// const movieGenre = (state = [], action) => {
-//     switch (action.type) {
-//         case 'SET_MOVIE_GENRE':
-//             return action.payload;
-//         default:
-//             return state;
-//     }
-// }
-
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
         movieDetails,
-        // movieGenre,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
