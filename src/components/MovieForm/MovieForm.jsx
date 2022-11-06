@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import Chip from '@mui/material/Chip';
 
  function MovieForm() {
     const dispatch = useDispatch();
@@ -47,7 +48,7 @@ import Link from '@mui/material/Link';
         </div>
 
         <Typography variant='h3' mt={2} sx={{ p: 3 }}>
-            Add a new movie
+            Movie Form
         </Typography>     
 
         <Box 
@@ -122,11 +123,14 @@ import Link from '@mui/material/Link';
             
         </Box>
 
-        <Typography variant='h5' mt={2} sx={{ p: 3 }}>
-            Changed your mind? Click cancel
-        </Typography> 
+        <Chip 
+            label="Back to Home Page" 
+            color="primary"
+            sx={{ m: 4, height: 40 }}
+            onClick={() => { history.push('/')}}
+        />
 
-        <Button 
+        {/* <Button 
             className='cancelBtn'
             type="submit"
             variant="contained"
@@ -135,7 +139,7 @@ import Link from '@mui/material/Link';
             onClick={() => { history.push('/')}}
         >
             Cancel
-        </Button>
+        </Button> */}
     </>
     
   );
