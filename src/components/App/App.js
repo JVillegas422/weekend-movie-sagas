@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import Typography from '@mui/material/Typography';
+import MovieForm from '../MovieForm/MovieForm';
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
             <MovieDetails />
           </Route>
         {/* Add Movie page */}
+          <Route path='/movieform' exact>
+            <MovieForm />
+          </Route>
+
       </Router>
     </div>
   );

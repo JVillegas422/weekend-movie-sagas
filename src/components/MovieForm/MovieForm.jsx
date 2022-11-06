@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import './MovieForm.css'
 
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+import FormControl from '@mui/material/FormControl';
 
 
  function MovieForm() {
@@ -31,9 +33,98 @@ import Typography from '@mui/material/Typography';
     
   return (
     <>
-        <Typography variant='h3' mt={4} >
-            MovieForm
-        </Typography>
+        <Typography variant='h3' mt={2} sx={{ p: 3 }}>
+            Add a new movie
+        </Typography>     
+
+        <Box 
+            component="form" 
+            mx={'auto'}
+            sx={{ 
+                '& .MuiTextField-root': { p: 6, width: '18rem', height: '4rem' ,bgcolor: 'white',  },
+                color: 'text.primary'
+            }}
+            noValidate
+            autoComplete="off"
+            onSubmit={(event) => addNewMovie(event)}
+        >
+            <FormControl
+                sx= {{ bgcolor: 'grey.400'}}
+            >
+            <TextField
+                required
+                id="filled-required"
+                label="Required"
+                placeholder="Movie Title"
+                variant="filled"
+                onChange={handleNewMovie}
+                name="title"
+            />
+
+            <TextField
+                required
+                id="filled-required"
+                label="Required"
+                placeholder="Movie Poster URL"
+                variant="filled"
+                onChange={handleNewMovie}
+                name="poster"
+            />
+
+            <TextField
+                required
+                id="filled-required"
+                label="Required"
+                placeholder="Description"
+                variant="filled"
+                onChange={handleNewMovie}
+                name="description"
+            />
+
+            <TextField
+                id="filled-select-currency"
+                select
+                label="Select"
+                helperText="Select Movie Genre"
+                variant="filled"
+                onChange={handleNewMovie}
+                name="genre_id"
+                value={''}
+            >
+                {genres.map((option) => {
+                    <MenuItem 
+                        key={option.id} 
+                        value={option.id} 
+                    >
+                        {option.name}
+                    </MenuItem>
+                })}
+            </TextField>
+
+            <Button
+                type="submit"
+                variant="contained"
+                sx={{ p: 2 }}
+            >
+                Save Movie
+            </Button>
+            </FormControl>
+            
+        </Box>
+
+        <Typography variant='h5' mt={2} sx={{ p: 3 }}>
+            Changed your mind? Click cancel
+        </Typography> 
+
+        <Button 
+            type="submit"
+            variant="contained"
+            sx={{ p: 2 }}
+            mb={2}
+            onClick={() => { history.push('/')}}
+        >
+            Cancel
+        </Button>
     </>
     
   );
