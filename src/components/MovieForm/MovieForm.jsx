@@ -54,7 +54,7 @@ import FormControl from '@mui/material/FormControl';
             <TextField
                 required
                 id="filled-required"
-                label="Required"
+                label="Movie Title"
                 placeholder="Movie Title"
                 variant="filled"
                 onChange={handleNewMovie}
@@ -64,7 +64,7 @@ import FormControl from '@mui/material/FormControl';
             <TextField
                 required
                 id="filled-required"
-                label="Required"
+                label="Movie Poster URL"
                 placeholder="Movie Poster URL"
                 variant="filled"
                 onChange={handleNewMovie}
@@ -74,32 +74,37 @@ import FormControl from '@mui/material/FormControl';
             <TextField
                 required
                 id="filled-required"
-                label="Required"
+                label="Move Description"
                 placeholder="Description"
                 variant="filled"
                 onChange={handleNewMovie}
                 name="description"
             />
 
+            {/* 
+                Need to add in the list of genres 
+                for user to select 
+            */}
+
+            {/* 
             <TextField
                 id="filled-select-currency"
                 select
-                label="Select"
-                helperText="Select Movie Genre"
+                label="Movie Genre"
                 variant="filled"
                 onChange={handleNewMovie}
                 name="genre_id"
                 value={''}
             >
-                {genres.map((option) => {
+                {genres.map((genre) => {
                     <MenuItem 
-                        key={option.id} 
-                        value={option.id} 
+                        key={genre.id} 
+                        value={genre.id} 
                     >
-                        {option.name}
+                        {genre.name}
                     </MenuItem>
                 })}
-            </TextField>
+            </TextField> */}
 
             <Button
                 type="submit"
