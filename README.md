@@ -8,6 +8,8 @@ This project allows a user to click on any of the movie posters and directs them
 
 I've also added links to the top and bottom of the page to navigate through the app. This app includes a form to add additional movie posters and movie descriptions.
 
+The app is style with Material-UI for change as I've previously utilized CSS to style my projects.
+
 ## Prerequisites
 
 - React
