@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import './MovieForm.css'
 
+// Material-UI imports listed down below
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -23,6 +24,7 @@ import Chip from '@mui/material/Chip';
         setNewMovie({ ...newMovie, [evt.target.name]: evt.target.value })
     }
 
+    // dispatch new movie info to the addNewMovie saga
     const addNewMovie = (evt) => {
         evt.preventDefault();
         dispatch({
@@ -51,6 +53,7 @@ import Chip from '@mui/material/Chip';
             Movie Form
         </Typography>     
 
+        {/* Materia-UI box & textfields for user inputs of movie info */}
         <Box 
             className='myBox'
             component="form" 
@@ -122,7 +125,9 @@ import Chip from '@mui/material/Chip';
             </FormControl>
             
         </Box>
-
+            {/* Trying out Chip rather than the Button for 
+                user to click back to home page
+            */}
         <Chip 
             label="Back to Home Page" 
             color="primary"

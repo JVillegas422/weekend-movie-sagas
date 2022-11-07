@@ -51,7 +51,7 @@ function* fetchMovieDetails(action) {
 }
 
 function* fetchGenre(action) {
-    // get movie genre from the DB
+    // get movie genre from the Database
     try {
         const movieId = action.payload;
         const movieDetails = yield axios.get(`/api/genre/${movieId}`)
@@ -107,7 +107,7 @@ const movieDetails = (state = [], action) => {
     }
 }
 
-// Used to store the selected movie genre(s)
+// Used to store movie genre
 const movieGenres = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIE_GENRE':

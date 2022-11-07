@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import { useHistory } from 'react-router-dom';
 
-// Matieral UI Imports
+// Material-UI imports listed down below
 import ImageList from '@mui/material/ImageList';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Grid from '@mui/material/Grid';
@@ -14,9 +14,10 @@ import Link from '@mui/material/Link';
 function MovieList() {
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
+    // useHistory to naviagte back to home page 
     const history = useHistory();
 
-    // On page load get all movies
+    // useEffect to dispatch on page load 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
