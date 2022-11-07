@@ -10,6 +10,10 @@ I've also added links to the top and bottom of the page to navigate through the 
 
 The app is style with Material-UI for change as I've previously utilized CSS to style my projects.
 
+## Screen Shot
+
+https://user-images.githubusercontent.com/89495265/200231048-1c31bfdd-c780-4dfe-9dad-e13fef8ef916.mp4
+
 ## Prerequisites
 
 - React
